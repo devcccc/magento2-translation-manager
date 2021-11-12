@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Framework\TranslateInterface" type="CCCC\TranslationManager\Framework\Translate" />
+
+    <type name="Magento\Framework\Phrase\Renderer\Translate">
+        <arguments>
+            <argument name="translator" xsi:type="object">CCCC\TranslationManager\Framework\Translate</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="cccc_translate_listing_data" xsi:type="string">CCCC\TranslationManager\Model\Resource\Translation\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Magento\Framework\View\TemplateEngine\Xhtml\Template" type="CCCC\TranslationManager\view\TemplateEngine\Xhtml\Template" />
+
+</config>

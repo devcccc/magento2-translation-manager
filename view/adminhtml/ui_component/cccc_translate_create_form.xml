@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">cccc_translate_create_form.cccc_translate_form_source</item>
+            <item name="deps" xsi:type="string">cccc_translate_create_form.cccc_translate_form_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Translate</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">cccc_translate_create_form</item>
+        </item>
+
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">CCCC\TranslationManager\UI\Button\Edit\BackButton</item>
+            <item name="save" xsi:type="string">CCCC\TranslationManager\UI\Button\Edit\SaveButton</item>
+        </item>
+    </argument>
+
+    <dataSource name="cccc_translate_form_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">CCCC\TranslationManager\Model\Translation\DataProvider</argument>
+            <argument name="name" xsi:type="string">cccc_translate_form_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id_enc</argument>
+            <argument name="requestFieldName" xsi:type="string">id_enc</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="*/*/save" />
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+
+    <fieldset name="info">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Information</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+        <field name="area">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Area</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="dataScope" xsi:type="string">area</item>
+                    <item name="disabled" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="text">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="dataScope" xsi:type="string">text</item>
+                    <item name="disabled" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+
+    <fieldset name="translations">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Translations</item>
+                <item name="sortOrder" xsi:type="number">40</item>
+            </item>
+        </argument>
+        <dynamicRows name="translation">
+            <settings>
+                <addButton>false</addButton>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <componentType>dynamicRows</componentType>
+            </settings>
+            <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="componentType" xsi:type="string">container</item>
+                    </item>
+                </argument>
+                <field name="language" formElement="input">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">true</item>
+                            <item name="disabled" xsi:type="boolean">true</item>
+                            <item name="dataType" xsi:type="string">translation</item>
+                            <item name="dataScope" xsi:type="string">language</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <validation>
+                            <rule name="required-entry" xsi:type="boolean">true</rule>
+                        </validation>
+                        <dataType>text</dataType>
+                        <label>Language</label>
+                    </settings>
+                </field>
+                <field name="field_2" formElement="input">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="dataType" xsi:type="string">translation</item>
+                            <item name="dataScope" xsi:type="string">text</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <validation>
+                            <rule name="required-entry" xsi:type="boolean">false</rule>
+                        </validation>
+                        <dataType>text</dataType>
+                        <label>Translation</label>
+                    </settings>
+                </field>
+            </container>
+        </dynamicRows>
+    </fieldset>
+</form>
