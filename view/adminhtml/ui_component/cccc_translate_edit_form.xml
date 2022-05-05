@@ -66,6 +66,11 @@
                     <item name="disabled" xsi:type="boolean">true</item>
                 </item>
             </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
         </field>
     </fieldset>
 

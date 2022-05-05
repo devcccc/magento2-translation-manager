@@ -1,13 +1,13 @@
 <?php
 /**
- * Module: CCCC\TranslationManager\Model\Resource\Translation
+ * Module: CCCC\TranslationManager\Model\ResourceModel\Translation
  * Copyright: (c) 2020 cccc.de
  * Date: 19.04.20 09:31
  *
  *
  */
 
-namespace CCCC\TranslationManager\Model\Resource\Translation;
+namespace CCCC\TranslationManager\Model\ResourceModel\Translation;
 
 
 use CCCC\TranslationManager\Helper\LanguageRetriever;

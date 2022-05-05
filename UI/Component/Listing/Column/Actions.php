@@ -26,10 +26,14 @@ class Actions extends Column
      */
     protected $urlBuilder;
 
+    /** @var \Magento\Framework\Serialize\Serializer\Serialize  */
+    protected $serializer;
+
     /**
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
      * @param UrlInterface $urlBuilder
+     * @param \Magento\Framework\Serialize\Serializer\Serialize $serializer
      * @param array $components
      * @param array $data
      */
@@ -37,10 +41,12 @@ class Actions extends Column
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
         UrlInterface $urlBuilder,
+        \Magento\Framework\Serialize\Serializer\Serialize $serializer,
         array $components = [],
         array $data = []
     ) {
         $this->urlBuilder = $urlBuilder;
+        $this->serializer = $serializer;
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
 
@@ -57,7 +63,7 @@ class Actions extends Column
                 $item[$this->getData('name')]['edit'] = [
                     'href' => $this->urlBuilder->getUrl(
                         self::ROW_EDIT_URL,
-                        ['id_enc' => urlencode(base64_encode(serialize(['area' => $item['area'], 'text' => $item['text']])))]
+                        ['id_enc' => urlencode(base64_encode($this->serializer->serialize(['area' => $item['area'], 'text' => $item['text']])))]
                     ),
                     'label' => __('Edit'),
                     'hidden' => false,

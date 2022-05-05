@@ -9,7 +9,7 @@
 
 namespace CCCC\TranslationManager\Controller\Adminhtml\Index;
 
-use CCCC\TranslationManager\Model\Resource\Translation\FileHandler;
+use CCCC\TranslationManager\Model\ResourceModel\Translation\FileHandler;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 

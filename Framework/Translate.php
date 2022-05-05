@@ -10,7 +10,7 @@
 namespace CCCC\TranslationManager\Framework;
 
 
-use CCCC\TranslationManager\Model\Resource\Translation\FileHandler;
+use CCCC\TranslationManager\Model\ResourceModel\Translation\FileHandler;
 use Magento\Framework\App\Language\Dictionary;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ScopeResolverInterface;

@@ -1,13 +1,13 @@
 <?php
 /**
- * Module: CCCC\TranslationManager\Model\Resource\Translation\Grid
+ * Module: CCCC\TranslationManager\Model\ResourceModel\Translation\Grid
  * Copyright: (c) 2020 cccc.de
  * Date: 15.04.20 13:27
  *
  *
  */
 
-namespace CCCC\TranslationManager\Model\Resource\Translation\Grid;
+namespace CCCC\TranslationManager\Model\ResourceModel\Translation\Grid;
 
 use CCCC\TranslationManager\Helper\LanguageRetriever;
 use Magento\Framework\Api\AttributeValue;
@@ -25,7 +25,6 @@ use Magento\Framework\TranslateInterface;
 use Psr\Log\LoggerInterface;
 
 class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult
-// \Magento\Framework\Data\Collection implements SearchResultInterface
 {
     /** @var int|null  */
     protected $_forcedTotalCount = null;
@@ -117,7 +116,7 @@ class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvide
                     $translationData = $this->_translate->loadData($area, true)->getData();
 
                     foreach ($translationData as $key => $value) {
-                        $hash = md5($area . $key);
+                        $hash = hash('sha256', $area . $key);
 
                         $translatedText = $value;
                         if ($currentLang != $langToUse) {

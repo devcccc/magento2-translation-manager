@@ -11,7 +11,7 @@ namespace CCCC\TranslationManager\Model\Translation;
 
 
 use CCCC\TranslationManager\Helper\LanguageRetriever;
-use CCCC\TranslationManager\Model\Resource\Translation\Grid\CollectionFactory;
+use CCCC\TranslationManager\Model\ResourceModel\Translation\Grid\CollectionFactory;
 use Magento\Framework\Api\AttributeValue;
 use Magento\Framework\Api\Search\Document;
 use Magento\Framework\Api\Search\DocumentInterface;
@@ -30,6 +30,9 @@ class DataProvider extends AbstractDataProvider
     /** @var LoggerInterface  */
     protected $logger;
 
+    /** @var \Magento\Framework\Serialize\Serializer\Serialize */
+    protected $serializer;
+
     /** @var array  */
     protected $filters = [];
 
@@ -42,6 +45,7 @@ class DataProvider extends AbstractDataProvider
         LanguageRetriever $languageRetriever,
         TranslateInterface $translate,
         LoggerInterface $logger,
+        \Magento\Framework\Serialize\Serializer\Serialize $serializer,
         array $meta = [],
         array $data = []
     )
@@ -49,6 +53,7 @@ class DataProvider extends AbstractDataProvider
         $this->logger = $logger;
         $this->languageRetriever = $languageRetriever;
         $this->translate = $translate;
+        $this->serializer = $serializer;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 
@@ -60,7 +65,7 @@ class DataProvider extends AbstractDataProvider
             $this->idEnc = urldecode($filter->getValue());
             $encodedValue = urldecode($filter->getValue());
             $decodedValue = base64_decode($encodedValue);
-            $fieldData = unserialize($decodedValue);
+            $fieldData = $this->serializer->unserialize($decodedValue);
 
             if (!empty($fieldData)) {
                 foreach ($fieldData as $key => $val) {

@@ -17,7 +17,7 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="cccc_translate_listing_data" xsi:type="string">CCCC\TranslationManager\Model\Resource\Translation\Grid\Collection</item>
+                <item name="cccc_translate_listing_data" xsi:type="string">CCCC\TranslationManager\Model\ResourceModel\Translation\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
